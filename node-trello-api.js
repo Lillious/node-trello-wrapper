@@ -3,6 +3,10 @@
 import 'dotenv/config';
 import fetch from 'node-fetch';
 
+// Check for required environment variables
+if (!process.env.TRELLO_API_KEY) err('TRELLO_API_KEY is not set');
+if (!process.env.TRELLO_OAUTH_TOKEN) err('TRELLO_OAUTH_TOKEN is not set');
+
 const err = (message) => {
 	message = `\x1b[31m${message}\x1b[0m`;
 	throw new Error(message);
