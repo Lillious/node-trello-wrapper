@@ -19,8 +19,6 @@ const fetchasync = async (url, method, headers) => {
 		headers: headers
 	});
 	const body = await response.json();
-	if (response.status != 200) err('There was an error receiving data from the remote server.');
-	if (!body) err('There was no data received from the remote server.');
 	return body;
 };
 
@@ -704,10 +702,9 @@ export const UpdateBoardChecklistItemDesc = async (id, desc) => {
 
 /* POST */
 
-export const CreateBoard = async (name, desc, idOrganization, closed) => {
+export const CreateBoard = async (name) => {
 	if (!name) err('No board name was provided.');
-	if (!idOrganization) err('No organization ID was provided.');
-	const response = fetchasync(`https://api.trello.com/1/boards?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'POST', { 'Content-Type': 'application/json', 'name': name, 'desc': desc, 'idOrganization': idOrganization, 'closed': closed })
+	const response = fetchasync(`https://api.trello.com/1/boards/?name=${name}&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'POST', { 'Content-Type': 'application/json'})
 	.then((body) => {
 		return body;
 	}).catch((error) => {
@@ -807,4 +804,3 @@ export const DeleteBoardLabel = async (id) => {
 	});
 	return response;
 }
-

@@ -150,10 +150,7 @@ Update Board Pos
     await trello.UpdateBoardPos(boardid, newBoardPos);
 
 Create Board
-
-    const newBoardName = 'New Board Name';
-    const newBoardDescription = 'New Board Description';
-    const newBoard = await trello.CreateBoard(newBoardName, newBoardDescription);
+    const newBoard = await trello.CreateBoard('New Board Name');
 
 Delete Board
 
