@@ -13,7 +13,7 @@ const err = (message) => {
 }
 
 const fetchasync = async (url, method, headers) => {
-	if (method != 'GET' && method != 'POST') err('Invalid request type');
+	if (method != 'GET' && method != 'POST' && method != 'DELETE' && method != 'PUT') err('Invalid request type');
 	const response = await fetch(url, {
 		method: method,
 		headers: headers

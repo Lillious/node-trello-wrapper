@@ -127,84 +127,37 @@ Get Board Name by ID
 
 Update Board Name
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardName = 'New Board Name';
-    await trello.UpdateBoardName(board, newBoardName);
+    await trello.UpdateBoardName(boardid, 'New Board Name');
 
 Update Board Description
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardDescription = 'New Board Description';
-    await trello.UpdateBoardDescription(board, newBoardDescription);
+    await trello.UpdateBoardDescription(boardid, 'New Board Description');
         
 Update Board Closed
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardClosed = true;
-    await trello.UpdateBoardClosed(board, newBoardClosed);
+    await trello.UpdateBoardClosed(boardid, [true, false]);
     
 Update Board Archived
     
-    const board = await trello.GetBoardById(boardId);
-    const newBoardArchived = true;
-    await trello.UpdateBoardArchived(board, newBoardArchived);
+    await trello.UpdateBoardArchived(boardid, [true, false]);
     
 Update Board Pinned
     
-    const board = await trello.GetBoardById(boardId);
-    const newBoardPinned = true;
-    await trello.UpdateBoardPinned(board, newBoardPinned);
+    await trello.UpdateBoardPinned(boardid, [true, false]);
 
 Update Board Pos
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardPos = 1;
-    await trello.UpdateBoardPos(board, newBoardPos);
+    await trello.UpdateBoardPos(boardid, newBoardPos);
 
 Create Board
 
     const newBoardName = 'New Board Name';
-    const newBoard = await trello.CreateBoard(newBoardName);
-    const newBoardId = newBoard.id;
-
-Create Board with Description
-
-    const newBoardName = 'New Board Name';
     const newBoardDescription = 'New Board Description';
     const newBoard = await trello.CreateBoard(newBoardName, newBoardDescription);
-    const newBoardId = newBoard.id;
-    
-Create Board with Closed
-
-    const newBoardName = 'New Board Name';
-    const newBoardClosed = true;
-    const newBoard = await trello.CreateBoard(newBoardName, newBoardClosed);
-    const newBoardId = newBoard.id;
-
-Create Board with Archived
-
-    const newBoardName = 'New Board Name';
-    const newBoardArchived = true;
-    const newBoard = await trello.CreateBoard(newBoardName, newBoardArchived);
-    const newBoardId = newBoard.id;
-
-Create Board with Pinned
-
-    const newBoardName = 'New Board Name';
-    const newBoardPinned = true;
-    const newBoard = await trello.CreateBoard(newBoardName, newBoardPinned);
-    const newBoardId = newBoard.id;
-
-Create Board with Pos
-
-    const newBoardName = 'New Board Name';
-    const newBoardPos = 1;
-    const newBoard = await trello.CreateBoard(newBoardName, newBoardPos);
-    const newBoardId = newBoard.id;
 
 Delete Board
 
-    await trello.DeleteBoard(boardid);
+    await trello.DeleteBoard(boardId);
         
 **Memberships**
 
@@ -399,32 +352,23 @@ Get Board Card by Name
 
 Update Board Card Names
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardCardNames = ['cardName1', 'cardName2'];
-    await trello.UpdateBoardCardName(board, newBoardCardNames);
+    await trello.UpdateBoardCardName(boardid, ['cardName1', 'cardName2']);
     
 Update Board Card Descriptions
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardCardDescriptions = ['cardDescription1', 'cardDescription2'];
-    await trello.UpdateBoardCardDescription(board, newBoardCardDescriptions);
+    await trello.UpdateBoardCardDescription(boardid, ['cardDescription1', 'cardDescription2']);
 
 Update Board Card Positions
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardCardPositions = [1, 2];
-    await trello.UpdateBoardCardPosition(board, newBoardCardPositions);
+    await trello.UpdateBoardCardPosition(boardid, [1, 2]);
 
 Update Board Card Closed 
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardCardClosed = [true, false];
-    await trello.UpdateBoardCardClosed(board, newBoardCardClosed);
+    await trello.UpdateBoardCardClosed(boardid, [true, false]);
     
 Delete Board Card
 
-    const card = await trello.GetBoardCardsById(cardId);
-    await trello.DeleteBoardCard(card);
+    await trello.DeleteBoardCard(cardid);
 
 **Lists**
 
@@ -463,32 +407,23 @@ Get Board List ID by Name
 
 Update Board List Name
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardListName = 'New List Name';
-    await trello.UpdateBoardListName(board, newBoardListName);
+    await trello.UpdateBoardListName(boardid, 'New List Name');
 
 Update Board List Position
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardListPosition = 1;
-    await trello.UpdateBoardListPosition(board, newBoardListPosition);
+    await trello.UpdateBoardListPosition(boardid, newBoardListPosition);
 
 Update Board List Closed
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardListClosed = true;
-    await trello.UpdateBoardListClosed(board, newBoardListClosed);
+    await trello.UpdateBoardListClosed(boardid, [true, false]);
 
 Update List Descripion
 
-    const list = await trello.GetBoardListsById(listId);
-    const newListDescription = 'New List Description';
-    await trello.UpdateListDescription(list, newListDescription);
+    await trello.UpdateListDescription(listid, 'New List Description');
 
 Delete Board List
 
-    const list = await trello.GetBoardListsById(listId);
-    await trello.DeleteBoardList(list);
+    await trello.DeleteBoardList(listid);
 
 **Checklists**
 
@@ -555,32 +490,23 @@ Get Board Checklist Item ID by Name
 
 Update Board Checklist Item Name
 
-    const checklistItem = await trello.GetBoardChecklistsItemsById(checklistItemId);
-    const newChecklistItemName = 'New Checklist Item Name';
-    await trello.UpdateBoardChecklistItemName(checklistItem, newChecklistItemName);
+    await trello.UpdateBoardChecklistItemName(checklistItemid, newChecklistItemName);
 
 Update Board Checklist Item Position
 
-    const checklistItem = await trello.GetBoardChecklistsItemsById(checklistItemId);
-    const newChecklistItemPosition = 1;
-    await trello.UpdateBoardChecklistItemPosition(checklistItem, newChecklistItemPosition);
+    await trello.UpdateBoardChecklistItemPosition(checklistItemid, newChecklistItemPosition);
 
 Update Board Checklist Item State
 
-    const checklistItem = await trello.GetBoardChecklistsItemsById(checklistItemId);
-    const newChecklistItemState = 'complete';
-    await trello.UpdateBoardChecklistItemState(checklistItem, newChecklistItemState);
+    await trello.UpdateBoardChecklistItemState(checklistItemId, newChecklistItemState);
 
 Update Board Checklist Item Descripion
 
-    const checklistItem = await trello.GetBoardChecklistsItemsById(checklistItemId);
-    const newChecklistItemDescription = 'New Checklist Item Description';
-    await trello.UpdateBoardChecklistItemDescription(checklistItem, newChecklistItemDescription);
+    await trello.UpdateBoardChecklistItemDescription(checklistItemid, 'New Description');
 
 Delete Board Checklist
 
-    const checklist = await trello.GetBoardChecklistsById(checklistId);
-    await trello.DeleteBoardChecklist(checklist);
+    await trello.DeleteBoardChecklist(checklistid);
 
 **Labels**
 
@@ -624,56 +550,35 @@ Get Board Label Color By Name
 
 Update Board Label
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardLabel = 'newBoardLabel';
-    await trello.UpdateBoardLabel(board, newBoardLabel);
+    await trello.UpdateBoardLabel(boardId, 'label');
 
 Update Board Label Names
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardLabelNames = ['labelName1', 'labelName2'];
-    await trello.UpdateBoardLabelNames(board, newBoardLabelNames);
-
-Update Board Label IDs
-
-    const board = await trello.GetBoardById(boardId);
-    const newBoardLabelIds = ['labelId1', 'labelId2'];
-    await trello.UpdateBoardLabelIds(board, newBoardLabelIds);
+    await trello.UpdateBoardLabelNames(boardId, ['labelName1', 'labelName2']);
 
 Update Board Label Descriptions
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardLabelDescriptions = ['labelDescription1', 'labelDescription2'];
-    await trello.UpdateBoardLabelDescriptions(board, newBoardLabelDescriptions);
+    await trello.UpdateBoardLabelDescriptions(boardId, ['labelDescription1', 'labelDescription2'];);
 
 Update Board Label Colors
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardLabelColors = ['labelColor1', 'labelColor2'];
-    await trello.UpdateBoardLabelColors(board, newBoardLabelColors);
+    await trello.UpdateBoardLabelColors(boardId, ['labelColor1', 'labelColor2']);
 
 Update Board Label Closed
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardLabelClosed = true;
-    await trello.UpdateBoardLabelClosed(board, newBoardLabelClosed);
+    await trello.UpdateBoardLabelClosed(boardId, [true, false]);
 
 Update Board Label Archived
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardLabelArchived = true;
-    await trello.UpdateBoardLabelArchived(board, newBoardLabelArchived);
+    await trello.UpdateBoardLabelArchived(boardId, [true, false]);
 
 Update Board Label Pos
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardLabelPos = 1;
-    await trello.UpdateBoardLabelPos(board, newBoardLabelPos);
+    await trello.UpdateBoardLabelPos(boardId, newBoardLabelPos);
 
 Delete Board Label
 
-    const label = await trello.GetBoardLabelById(labelId);
-    await trello.DeleteBoardLabel(label);
+    await trello.DeleteBoardLabel(labelid);
 
 **Members**
 
@@ -794,9 +699,7 @@ Invite Board Member By Name
 
 Update Board Member Names
 
-    const board = await trello.GetBoardById(boardId);
-    const newBoardMemberNames = ['memberName1', 'memberName2'];
-    await trello.UpdateBoardMemberNames(board, newBoardMemberNames);
+    await trello.UpdateBoardMemberNames(boardId, ['memberName1', 'memberName2']);
 
 Update Board Member Bio
 
@@ -804,6 +707,4 @@ Update Board Member Bio
 
 Remove Board Member
 
-    const board = await trello.GetBoardById(boardId);
-    const memberId = 'memberId';
-    await trello.RemoveBoardMember(board, memberId);
+    await trello.RemoveBoardMember(boardId, memberId);
