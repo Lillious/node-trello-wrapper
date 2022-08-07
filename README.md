@@ -1,6 +1,10 @@
 # nodejs-trello-api
 A NodeJS API for Trello
 
+# Usage
+    import * as trello from './node-trello-api.js';
+
+# Documentation 
 Organizations
 
     Get All organizations:
