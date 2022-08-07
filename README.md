@@ -792,12 +792,6 @@ Invite Board Member By Name
 
     const member = await trello.InviteBoardMemberByName(boardId, memberName);
 
-Update Board Member IDs
-
-    const board = await trello.GetBoardById(boardId);
-    const newBoardMemberIds = ['memberId1', 'memberId2'];
-    await trello.UpdateBoardMemberIds(board, newBoardMemberIds);
-
 Update Board Member Names
 
     const board = await trello.GetBoardById(boardId);
