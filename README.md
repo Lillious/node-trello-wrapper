@@ -7,8 +7,8 @@ A NodeJS API for Trello
 # Documentation 
 Organizations
 
-    Get All organizations:
-        const organization = await trello.GetOrganizations();
+Get All organizations:
+    const organization = await trello.GetOrganizations();
 
     Get All organization ID's:
         const organization = await trello.GetOrganizations();
