@@ -55,7 +55,7 @@ export const GetAllBoards = async () => {
 	return response;
 }
 
-export const GetBoardById = async (id) => {
+export const GetBoard = async (id) => {
 	if (!id) err('No board ID was provided.');
 	const response = fetchasync(`https://api.trello.com/1/boards/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'GET', { 'Content-Type': 'application/json' })
 	.then((body) => {
@@ -82,18 +82,6 @@ export const GetBoardCards = async (id) => {
 export const GetBoardCardsById = async (id) => {
 	if (!id) err('No card ID was provided.');
 	const response = fetchasync(`https://api.trello.com/1/cards${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'GET', { 'Content-Type': 'application/json' })
-	.then((body) => {
-		return body;
-	})
-	.catch((error) => {
-		err(error);
-	});
-	return response;
-}
-
-export const GetBoardCardsByName = async (name) => {
-	if (!name) err('No card name was provided.');
-	const response = fetchasync(`https://api.trello.com/1/search?query=${name}&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'GET', { 'Content-Type': 'application/json' })
 	.then((body) => {
 		return body;
 	})
@@ -217,17 +205,6 @@ export const GetBoardMemberById = async (id) => {
 	return response;
 }
 
-export const GetBoardMembersByName = async (name) => {
-	if (!name) err('No member name was provided.');
-	const response = fetchasync(`https://api.trello.com/1/search?query=${name}&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'GET', { 'Content-Type': 'application/json' })
-	.then((body) => {
-		return body;
-	}).catch((error) => {
-		err(error);
-	});
-	return response;
-}
-
 export const GetBoardChecklists = async (id) => {
 	if (!id) err('No board ID was provided.');
 	const response = fetchasync(`https://api.trello.com/1/boards/${id}/checklists?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'GET', { 'Content-Type': 'application/json' })
@@ -324,7 +301,7 @@ export const UpdateBoardName = async (id, name) => {
 	return response;
 }
 
-export const UpdateBoardDesc = async (id, desc) => {
+export const UpdateBoardDescription = async (id, desc) => {
 	if (!id) err('No board ID was provided.');
 	const response = fetchasync(`https://api.trello.com/1/boards/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json', 'desc': desc })
 	.then((body) => {
@@ -335,9 +312,9 @@ export const UpdateBoardDesc = async (id, desc) => {
 	return response;
 }
 
-export const UpdateBoardClosed = async (id, closed) => {
+export const ArchiveBoard = async (id) => {
 	if (!id) err('No board ID was provided.');
-	const response = fetchasync(`https://api.trello.com/1/boards/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json', 'closed': closed })
+	const response = fetchasync(`https://api.trello.com/1/boards/${id}/?closed=true&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json' })
 	.then((body) => {
 		return body;
 	}).catch((error) => {
@@ -346,9 +323,9 @@ export const UpdateBoardClosed = async (id, closed) => {
 	return response;
 }
 
-export const UpdateBoardArchived = async (id, archived) => {
+export const UnArchiveBoard = async (id) => {
 	if (!id) err('No board ID was provided.');
-	const response = fetchasync(`https://api.trello.com/1/boards/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json', 'archived': archived })
+	const response = fetchasync(`https://api.trello.com/1/boards/${id}/?closed=false&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json' })
 	.then((body) => {
 		return body;
 	}).catch((error) => {
@@ -423,9 +400,20 @@ export const UpdateBoardCardPosition = async (id, pos) => {
 	return response;
 }
 
-export const UpdateBoardCardClosed = async (id, closed) => {
+export const ArchiveCard = async (id, closed) => {
 	if (!id) err('No card ID was provided.');
-	const response = fetchasync(`https://api.trello.com/1/cards/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json', 'closed': closed })
+	const response = fetchasync(`https://api.trello.com/1/cards/${id}/?closed=true&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json' })
+	.then((body) => {
+		return body;
+	}).catch((error) => {
+		err(error);
+	});
+	return response;
+}
+
+export const UnArchiveCard = async (id, closed) => {
+	if (!id) err('No card ID was provided.');
+	const response = fetchasync(`https://api.trello.com/1/cards/${id}/?closed=false&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json' })
 	.then((body) => {
 		return body;
 	}).catch((error) => {
@@ -478,9 +466,9 @@ export const UpdateBoardLabelColors = async (id, color) => {
 	return response;
 }
 
-export const UpdateBoardLabelClosed = async (id, closed) => {
+export const ArchiveLabel = async (id) => {
 	if (!id) err('No label ID was provided.');
-	const response = fetchasync(`https://api.trello.com/1/labels/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json', 'closed': closed })
+	const response = fetchasync(`https://api.trello.com/1/labels/${id}/?closed=true&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json' })
 	.then((body) => {
 		return body;
 	}).catch((error) => {
@@ -489,9 +477,9 @@ export const UpdateBoardLabelClosed = async (id, closed) => {
 	return response;
 }
 
-export const UpdateBoardLabelArchived = async (id, archived) => {
+export const UnArchiveLabel = async (id) => {
 	if (!id) err('No label ID was provided.');
-	const response = fetchasync(`https://api.trello.com/1/labels/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json', 'archived': archived })
+	const response = fetchasync(`https://api.trello.com/1/labels/${id}/?closed=false&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json' })
 	.then((body) => {
 		return body;
 	}).catch((error) => {
