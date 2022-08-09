@@ -1,8 +1,14 @@
-# nodejs-trello-api
 A NodeJS API Wrapper for Trello
 
+# Installation
+    npm i node-trello-wrapper
+
 # Usage
-    import * as trello from './node-trello-api.js';
+    import * as trello from './node-trello-wrapper';
+
+# Required Environment Variables
+    TRELLO_API_KEY
+    TRELLO_OAUTH_TOKEN
 
 # Documentation
 
