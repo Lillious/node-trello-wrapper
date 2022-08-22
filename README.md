@@ -16,7 +16,7 @@ A NodeJS API Wrapper for Trello
 
 Get All organizations
 
-    const organization = await trello.GetAllOrganizations();
+    await trello.GetAllOrganizations();
 
 Get All organization Boards
 
@@ -40,7 +40,7 @@ Get All organization Boards Lists Cards Checklists Items
 
 Get organization
         
-    const organization = await trello.GetOrganization('Organization ID');
+    await trello.GetOrganization('Organization ID');
 
 Create organization
 
@@ -54,11 +54,11 @@ Delete organization
 
 Get All Trello Boards
 
-    const boards await trello.GetAllBoards();
+    await trello.GetAllBoards();
 
 Get Board
 
-    const board = await trello.GetBoard('Board ID');
+    await trello.GetBoard('Board ID');
 
 Update Board Name
 
@@ -86,7 +86,7 @@ Update Board Pos
 
 Create Board
 
-    trello.CreateBoard('Board Name', 'Organization ID');
+    await trello.CreateBoard('Board Name', 'Organization ID');
 
 Delete Board
 
@@ -108,21 +108,19 @@ Delete Board Webhook
 
 Get All Trello Board Memberships
 
-    const memberships = await trello.GetBoardMemberships('Board ID');
+    await trello.GetBoardMemberships('Board ID');
 
 Get Board Membership by ID
 
-    const membership = await trello.GetBoardMembershipById(membershipId);
+    await trello.GetBoardMembershipById(membershipId);
     
 Get Board Membership by Email
 
-    const membership = await trello.GetBoardMembershipByEmail(membershipEmail);
-    const membershipId = membership.id;
+    await trello.GetBoardMembershipByEmail(membershipEmail);
 
 Get Board Membership by Name
 
-    const membership = await trello.GetBoardMembershipByName(membershipName);
-    const membershipId = membership.id;
+    await trello.GetBoardMembershipByName(membershipName);
 
 Update Membership by ID
 
@@ -154,11 +152,11 @@ Delete Membership
 
 Get All Board Cards
 
-    const cards = await trello.GetBoardCards('Board ID');
+    await trello.GetBoardCards('Board ID');
 
 Get Board Card by ID
 
-    const card = await trello.GetBoardCardsById('Card ID');
+    await trello.GetBoardCardsById('Card ID');
 
 Update Board Card Names
 
@@ -192,11 +190,11 @@ Delete Card
 
 Get All Board Lists
 
-    const lists = await trello.GetBoardLists('Board ID');
+    await trello.GetBoardLists('Board ID');
 
 Get Board List By ID
 
-    const list = await trello.GetBoardListsById(listId);
+    await trello.GetBoardListsById(listId);
 
 Update Board List Name
 
@@ -226,15 +224,15 @@ UnArchive List
 
 Get All Checklists
 
-    const checklists = await trello.GetBoardChecklists('Board ID');
+    await trello.GetBoardChecklists('Board ID');
     
 Get Checklist By ID
 
-    const checklist = await trello.GetBoardChecklists('Board ID');
+    await trello.GetBoardChecklists('Board ID');
 
 Get Checklist Items
 
-    const checklistItems = await trello.GetChecklistItems('Checklist ID');
+    await trello.GetChecklistItems('Checklist ID');
 
 Update Checklist Item Name
 
@@ -272,11 +270,11 @@ Delete Checklist Item
 
 Get All Board Labels
 
-    const labels = await trello.GetBoardLabels('Board ID');
+    await trello.GetBoardLabels('Board ID');
 
 Get Board Label By ID
 
-    const label = await trello.GetBoardLabelById(labelId);
+    await trello.GetBoardLabelById(labelId);
 
 Update Board Label
 
@@ -314,23 +312,23 @@ Delete Board Label
 
 Get All Board Members
 
-    const members = await trello.GetBoardMembers('Board ID');
+    await trello.GetBoardMembers('Board ID');
 
 Get Board Member By ID
 
-    const member = await trello.GetBoardMembersById(memberId);
+    await trello.GetBoardMembersById(memberId);
 
 Invite Board Member By Email
 
-    const member = await trello.InviteBoardMemberByEmail('Board ID', 'Member Email');
+    await trello.InviteBoardMemberByEmail('Board ID', 'Member Email');
 
 Invite Board Member By ID
 
-    const member = await trello.InviteBoardMemberById('Board ID', 'Member ID');
+    await trello.InviteBoardMemberById('Board ID', 'Member ID');
 
 Invite Board Member By Name
 
-    const member = await trello.InviteBoardMemberByName('Board ID', 'Member Name');
+    await trello.InviteBoardMemberByName('Board ID', 'Member Name');
 
 Remove Board Member
 
