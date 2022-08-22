@@ -91,7 +91,19 @@ Create Board
 Delete Board
 
     await trello.DeleteBoard('Board ID');
+
+Get Board Webhook
+
+    await trello.GetBoardWebhook('Webhook ID');
         
+Create Board Webhook
+
+    await trello.CreateBoardWebhook('Board ID', 'Callback URL');
+
+Delete Board Webhook
+
+    await trello.DeleteBoardWebHook('Webhook ID');
+
 **Memberships**
 
 Get All Trello Board Memberships

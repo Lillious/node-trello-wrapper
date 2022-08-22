@@ -264,11 +264,21 @@ export const GetBoardLabelByName = async (name) => {
 	return response;
 }
 
-
 export const InviteMemberToBoardByName = async (name, email) => {
 	if (!name) err('No board name was provided.');
 	if (!email) err('No email was provided.');
 	const response = fetchasync(`https://api.trello.com/1/search?query=${name}&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'GET', { 'Content-Type': 'application/json' })
+	.then((body) => {
+		return body;
+	}).catch((error) => {
+		err(error);
+	});
+	return response;
+}
+
+export const GetBoardWebhook = async (id) => {
+	if (!id) err('No webhook ID was provided.');
+	const response = fetchasync(`https://api.trello.com/1/boards/${id}/webhooks?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'GET', { 'Content-Type': 'application/json' })
 	.then((body) => {
 		return body;
 	}).catch((error) => {
@@ -400,7 +410,7 @@ export const UpdateBoardCardPosition = async (id, pos) => {
 	return response;
 }
 
-export const ArchiveCard = async (id, closed) => {
+export const ArchiveCard = async (id) => {
 	if (!id) err('No card ID was provided.');
 	const response = fetchasync(`https://api.trello.com/1/cards/${id}/?closed=true&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json' })
 	.then((body) => {
@@ -411,7 +421,7 @@ export const ArchiveCard = async (id, closed) => {
 	return response;
 }
 
-export const UnArchiveCard = async (id, closed) => {
+export const UnArchiveCard = async (id) => {
 	if (!id) err('No card ID was provided.');
 	const response = fetchasync(`https://api.trello.com/1/cards/${id}/?closed=false&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'PUT', { 'Content-Type': 'application/json' })
 	.then((body) => {
@@ -750,6 +760,18 @@ export const CreateChecklistItem = async (name, checklistid) => {
 	return response;
 }
 
+export const CreateBoardWebhook = async (id, callbackurl) => {
+	if (!id) err('No board ID was provided.');
+	if (!callbackurl) err('No callback URL was provided.');
+	const response = fetchasync(`https://api.trello.com/1/webhooks/?callbackURL=${callbackurl}&idModel=${id}&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'POST', { 'Content-Type': 'application/json', 'x-trello-task': 'create-webhook' })
+	.then((body) => {
+		return body;
+	}).catch((error) => {
+		err(error);
+	});
+	return response;
+}
+
 /* DELETE */
 
 export const DeleteBoard = async (id) => {
@@ -822,6 +844,17 @@ export const DeleteBoardLabel = async (id) => {
 export const DeleteOrganization = async (id) => {
 	if (!id) err('No organization ID was provided.');
 	const response = fetchasync(`https://api.trello.com/1/organizations/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'DELETE', { 'Content-Type': 'application/json' })
+	.then((body) => {
+		return body;
+	}).catch((error) => {
+		err(error);
+	});
+	return response;
+}
+
+export const DeleteBoardWebHook = async (id) => {
+	if (!id) err('No webhook ID was provided.');
+	const response = fetchasync(`https://api.trello.com/1/webhooks/${id}?key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'DELETE', { 'Content-Type': 'application/json' })
 	.then((body) => {
 		return body;
 	}).catch((error) => {
