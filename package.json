@@ -1,0 +1,28 @@
+{
+  "name": "node-trello-wrapper",
+  "version": "1.0.6",
+  "description": "A NodeJS API Wrapper for Trello",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LilliousDev/node-trello-wrapper.git"
+  },
+  "keywords": [
+    "trello",
+    "api",
+    "node-trello"
+  ],
+  "author": "Logan Brown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LilliousDev/node-trello-wrapper/issues"
+  },
+  "homepage": "https://github.com/LilliousDev/node-trello-wrapper#readme",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "node-fetch": "^3.2.10"
+  }
+}
