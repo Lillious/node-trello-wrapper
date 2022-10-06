@@ -1,6 +1,6 @@
 {
   "name": "node-trello-wrapper",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A NodeJS API Wrapper for Trello",
   "main": "main.js",
   "scripts": {
