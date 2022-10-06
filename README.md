@@ -4,7 +4,7 @@ A NodeJS API Wrapper for Trello
     npm i node-trello-wrapper
 
 # Usage
-    import * as trello from './node-trello-wrapper';
+    import * as trello from 'node-trello-wrapper';
 
 # Required Environment Variables
     TRELLO_API_KEY
@@ -180,7 +180,7 @@ UnArchive Card
     
 Create Board Card
 
-    await trello.CreateCard('Card Name', 'List ID');
+    await trello.CreateCard('Card Name', 'Description', 'List ID');
 
 Delete Card
 
@@ -300,7 +300,7 @@ UnArchive Label
 
     await trello.UnArchiveLabel('Label ID');
 
-Update Board Label Pos
+Update Board Label Position
 
     await trello.UpdateBoardLabelPos('Board ID', newBoardLabelPos);
 

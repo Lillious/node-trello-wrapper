@@ -712,10 +712,11 @@ export const InviteMemberToBoardByID = async (id, email) => {
 	return response;
 }
 
-export const CreateCard = async (name, listid) => {
+export const CreateCard = async (name, desc, listid) => {
 	if (!name) err('No card name was provided.');
 	if (!listid) err('No list ID was provided.');
-	const response = fetchasync(`https://api.trello.com/1/cards/?name=${name}&idList=${listid}&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'POST', { 'Content-Type': 'application/json', 'x-trello-task': 'create-card' })
+	if (!desc) desc = '';
+	const response = fetchasync(`https://api.trello.com/1/cards/?name=${name}&desc=${desc}&idList=${listid}&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_OAUTH_TOKEN}`, 'POST', { 'Content-Type': 'application/json', 'x-trello-task': 'create-card' })
 	.then((body) => {
 		return body;
 	}).catch((error) => {
